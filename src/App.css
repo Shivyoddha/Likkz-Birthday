@@ -1,0 +1,229 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #073b4c;
+}
+
+.birthdayCard {
+  position: relative;
+  width: 400px; /* Adjust the width */
+  height: 500px; /* Adjust the height */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: 1s;
+}
+
+/* Add this to your existing CSS */
+
+.tiltedPersonImage {
+  position: absolute;
+  top: 85%; /* Adjust the vertical position */
+  left: 55%; /* Adjust the horizontal position */
+  transform: translateY(-50%) rotate(-10deg); /* Adjust the tilt angle */
+}
+
+.tiltedPersonImage img {
+  width: 120px; /* Adjust the width */
+  height: 120px; /* Adjust the height */
+  border-radius: 20%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform-origin: top left;
+}
+
+.tiltedPersonImage1 {
+  position: absolute;
+  top: 55%; /* Adjust the vertical position */
+  left: 55%; /* Adjust the horizontal position */
+  transform: translateY(-50%) rotate(30deg); /* Adjust the tilt angle */
+  z-index:2;
+}
+
+.tiltedPersonImage1 img {
+  width: 120px; /* Adjust the width */
+  height: 120px; /* Adjust the height */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform-origin: top left;
+}
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(600px) rotate(360deg);
+  }
+}
+
+.birthdayCard::before,
+.birthdayCard::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #f6d365;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: confetti-fall 3s linear infinite;
+}
+
+.birthdayCard::before {
+  left: 20%;
+  animation-delay: 0.2s;
+}
+
+.birthdayCard::after {
+  left: 80%;
+  animation-delay: 0.5s;
+}
+
+
+.birthdayCard:hover {
+  transform: perspective(2500px) rotate(5deg);
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    0 10px 100px rgba(0, 0, 0, 0.5);
+}
+
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg);
+}
+
+.birthdayCard:hover .happy {
+  visibility: hidden;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: 400px; /* Adjust the width */
+  height: 500px; /* Adjust the height */
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    30px 0 50px rgba(0, 0, 0, 0.4);
+  transition: 0.6s;
+}
+
+.happy {
+  font-family: Tahoma, sans-serif;
+  text-align: center;
+  margin: 60px; /* Adjust the margin */
+  font-size: 24px; /* Adjust the font size */
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  transition: 0.1s;
+  backface-visibility: visible;
+}
+
+.balloons {
+  position: absolute;
+}
+
+.balloonOne,
+.balloonTwo,
+.balloonThree,
+.balloonFour {
+  position: absolute;
+  width: 85px;
+  height: 95px;
+  border-radius: 50%;
+}
+
+.balloonOne {
+  background-color: rgb(239, 71, 111, 0.7);
+  left: -10px;
+  top: 50px;
+}
+
+.balloonTwo {
+  background-color: rgb(6, 214, 160, 0.7);
+  left: 50px;
+  top: 20px;
+}
+
+.balloonThree {
+  background-color: rgb(255, 209, 102, 0.7);
+  left: 110px;
+  top: 50px;
+}
+
+.balloonFour {
+  background-color: rgb(17, 138, 178, 0.7);
+  left: 170px;
+  top: 20px;
+}
+
+.balloonOne:before,
+.balloonTwo:before,
+.balloonThree:before,
+.balloonFour:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 155px;
+  background-color: #ffd166;
+  top: 95px;
+  left: 43px;
+}
+
+.balloonOne:after,
+.balloonTwo:after,
+.balloonThree:after,
+.balloonFour:after {
+  content: "";
+  position: absolute;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  top: 94px;
+  left: 37px;
+}
+
+.balloonOne:after {
+  border-bottom: 10px solid #ef476f;
+}
+
+.balloonTwo:after {
+  border-bottom: 10px solid #06d6a0;
+}
+
+.balloonThree:after {
+  border-bottom: 10px solid #ffd166;
+}
+
+.balloonFour:after {
+  border-bottom: 10px solid #118ab2;
+}
+
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 400px; /* Adjust the width */
+  height: 500px; /* Adjust the height */
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-family: "Brush Script MT", cursive;
+  margin: 40px;
+  color: #333;
+}
+
+.name {
+  position: absolute;
+  left: 50%; /* Center the text horizontally */
+  top: 300px; /* Adjust the vertical position */
+  transform: translateX(-50%); /* Center the text horizontally */
+  color: #333;
+}
+
+.back {
+  font-family: Tahoma, sans-serif;
+  color: #333;
+  text-align: center;
+  margin: 30px;
+  outline-color: #333;
+  outline-style: dotted;
+}
